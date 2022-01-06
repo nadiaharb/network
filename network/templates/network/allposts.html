@@ -1,0 +1,95 @@
+{% extends "network/layout.html" %}
+{% load static %}
+{% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="{% static 'network/base.js' %}">
+
+    </script>
+{% endblock %}
+{% block body %}
+{% if user.is_authenticated %}
+<div class="form">
+
+    <div class="user">{{user}}</div>
+
+
+<form method="post" action="{%url 'allposts'%}">
+    {%csrf_token%}
+
+    {{form.as_p}}
+
+    <input type="submit" value="Post" class="postbtn">
+
+
+</form>
+</div>
+{%endif%}
+<hr>
+
+
+
+<div class="container">
+        {% for post in page_obj.object_list %}
+          {# note that the list of posts are in the page_obj.object_list not page_obj #}
+    <span class="username"><a href="{% url 'profile' post.username %}">{{post.username}}</a></span>
+<img src="{% static 'network/approval-16.jpg' %}" alt="My image">
+ <br>
+        {% if user.is_authenticated   %}
+    {% ifequal post.username user  %}
+
+    <button type="button" class="editbtn btn btn-link" id="{{post.id}}" > Edit</button>
+
+
+{%endifequal%}
+    {%endif%}
+     <p class="date">{{post.date}}</p>
+<span  id="edit{{post.id}}" class="text">{{post.text}}</span>
+<br>
+
+
+
+<i  class="fa fa-thumbs-up"></i><p id="likes{{post.id}}"> {{post.likes}}</p>
+    {% if user.is_authenticated   %}
+    {%if post.username != user%}
+
+
+
+
+
+    <button type="submit" class="likebtn {{post.id}}" id="likebtn{{post.id}}" name="likebtn"> Like</button>
+
+
+{%endif%}
+
+
+
+    <hr/>
+    {%endif%}
+         {% endfor %}
+
+
+    </div>
+
+
+    <center>
+        {%if page_obj.has_previous %} {# whether the previous page exists #}
+            <a href="?page={{page_obj.previous_page_number}}">Previous </a> {# link to the prev page #}
+        {% endif %}
+        <span>{{page_obj.number}}</span> {# the current page number #}
+
+        {%if page_obj.has_next %} {# whether the next page exists #}
+            <a href="?page={{page_obj.next_page_number}}">Next </a> {# link to the next page #}
+        {% endif %}
+    </center>
+
+
+
+<hr>
+
+
+<hr>
+<input type="hidden" id="myLike" name="variable" value="{{ liked_posts }}">
+
+
+{% endblock %}
+

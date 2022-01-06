@@ -1,0 +1,109 @@
+
+
+body {
+  background-color: white;
+  font-family: inherit;
+
+
+}
+button[name=likebtn] {
+display:inline-block;
+padding:0.3em 1.2em;
+margin:0 0.3em 0.3em 0;
+border-radius:2em;
+box-sizing: border-box;
+text-decoration:none;
+font-family:'Roboto',sans-serif;
+font-weight:100;
+color:#FFFFFF;
+background-color:#4eb5f1;
+text-align:center;
+transition: all 0.2s;
+}
+
+.username {
+font-weight:bold;
+
+}
+
+.mark{
+color: blue;
+}
+
+.container{
+padding: 20px;
+
+}
+
+.date {
+font-size: 12px;
+}
+
+.all-likes{
+margin-top: 10px;
+}
+
+.edit{
+
+border-style: outset;
+
+
+}
+.text{
+width: 20px;
+
+
+}
+.new_post {
+width: 50%;
+  border: none;
+height: 100px;
+}
+
+.form {
+  margin: auto;
+  width: 50%;
+  border: none;
+  padding: 10px;
+}
+
+.postbtn{
+display:inline-block;
+padding:0.3em 1.2em;
+margin:0 0.3em 0.3em 0;
+border-radius:2em;
+box-sizing: border-box;
+text-decoration:none;
+font-family:'Roboto',sans-serif;
+font-weight:300;
+color:#FFFFFF;
+background-color:#4eb5f1;
+text-align:center;
+transition: all 0.2s;
+}
+.postbtn:hover{
+background-color:#4095c6;
+}
+@media all and (max-width:30em){
+.postbtn{
+display:block;
+margin:0.2em auto;
+
+}}
+.profile{
+text-align:center;
+
+}
+.user-profile{
+font-weight: bold;
+font-size: 25px;
+}
+
+.user{
+ font-size: 30px;
+ font-weight: bold;
+  color: #8A2BE2;
+}
+
+
+

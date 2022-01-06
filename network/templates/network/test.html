@@ -1,0 +1,46 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+{{posts}}
+<div class="container">
+        {% for post in page_obj.object_list %}
+          {# note that the list of posts are in the page_obj.object_list not page_obj #}
+            <h3>{{post.text}}</h3>
+            <small>{{post.username}}</small>
+
+<p>{{post.date}}</p>
+     <p><h3>{{post.id}}</h3></p>
+       <p>LIKES: {{post.likes}}</p>
+            <hr/>
+         {% endfor %}
+    </div>
+
+
+    <center>
+        {%if page_obj.has_previous %} {# whether the previous page exists #}
+            <a href="?page={{page_obj.previous_page_number}}">Previous</a> {# link to the prev page #}
+        {% endif %}
+        <span>{{page_obj.number}}</span> {# the current page number #}
+
+        {%if page_obj.has_next %} {# whether the next page exists #}
+            <a href="?page={{page_obj.next_page_number}}">Next</a> {# link to the next page #}
+        {% endif %}
+    </center>
+
+<h1>fa fa-thumbs-up</h1>
+
+<i class="fa fa-thumbs-up"></i>
+<i class="fa fa-thumbs-up" style="font-size:24px"></i>
+<i class="fa fa-thumbs-up" style="font-size:36px"></i>
+<i class="fa fa-thumbs-up" style="font-size:48px;color:red"></i>
+<br>
+
+<p>Used on a button:</p>
+<button style="font-size:24px">Button <i class="fa fa-thumbs-up"></i></button>
+
+<p>Unicode:</p>
+<i style="font-size:24px" class="fa">&#xf087;</i>
+
+{% endblock %}
+
